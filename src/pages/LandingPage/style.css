@@ -1,0 +1,20 @@
+.enquiry__input {
+  background-color: aliceblue;
+}
+
+.trending__image {
+  max-width: 200px;
+}
+
+.offer_background {
+  background-color: #750c0c;
+}
+.landingpage_banner_container {
+  background-image: url(../../assets/images/homepage_banner.png);
+  background-position: center center;
+  background-repeat: no-repeat;
+  /* background-attachment: fixed; */
+  background-size: cover;
+  background-color: rgba(0, 0, 0, 0.3);
+  background-blend-mode: darken;
+}
