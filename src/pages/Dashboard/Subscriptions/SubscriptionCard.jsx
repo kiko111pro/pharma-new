@@ -75,7 +75,13 @@ function SubscriptionCard({ active, price, plan, planDetails }) {
         {!active && (
           <Button
             variant="contained"
-            sx={{ position: "absolute", bottom: 10, right: 10 }}
+            sx={{
+              position: { xs: "static", sm: "absolute" },
+              bottom: 10,
+              right: 10,
+              // alignSelf: "end",
+              width: { xs: "50%", sm: "initial" },
+            }}
           >
             Upgrade
           </Button>

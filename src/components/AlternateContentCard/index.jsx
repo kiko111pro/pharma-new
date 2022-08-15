@@ -22,7 +22,7 @@ function Card({ title = "Plan", children, right = false }) {
           sx={{
             textAlign: "right",
             position: "absolute",
-            bottom: 0,
+            bottom: !right ? 10 : 0,
             right: 10,
           }}
         >
@@ -32,6 +32,7 @@ function Card({ title = "Plan", children, right = false }) {
                 fontSize: 44,
                 fontWeight: 500,
                 color: colors.primary,
+                // lea,
               }}
             >
               {right}

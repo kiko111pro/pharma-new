@@ -13,6 +13,7 @@ import { colors } from "../../mui_theme/theme";
 import Sidebar from "./Sidebar";
 import Result from "./Result";
 import SwipeableEdgeDrawer from "./SwipeDrawer";
+import Footer from "../../components/layout/Footer";
 
 function Search() {
   const [selectedFilters, setSelectedFilters] = useState([]);
@@ -24,82 +25,90 @@ function Search() {
   const removeAll = () => setSelectedFilters([]);
 
   return (
-    <Container>
-      <Stack sx={{ my: 2 }}>
-        <Typography>{"Medical Darpan > Search > Fabiflu Teblet"}</Typography>
-        <Box sx={{ alignSelf: "center", width: "100%", maxWidth: 600 }}>
-          <SearchInput />
-        </Box>
-        <Box sx={{ display: "flex", gap: 2, my: 2 }}>
-          <Typography variant="h5">
-            Paracetamol{" "}
-            <span style={{ fontSize: "1.2rem" }}>(128 products)</span>
-          </Typography>
-          <Box sx={{ display: "flex", gap: 1, flexWrap: "wrap" }}>
-            {selectedFilters.map((item, i) => (
-              <Box
-                key={i}
-                sx={{
-                  bgcolor: colors.secondary,
-                  color: colors.white,
-                  display: "flex",
-                  // height: 30,
-                  alignItems: "center",
-                  px: 1,
-                  gap: 1,
-                  borderRadius: 2,
-                }}
-              >
-                <Typography>{item}</Typography>
-                <ButtonBase onClick={() => handleRemoveFilter(item)}>
-                  <CloseIcon fontSize="small" sx={{ color: "#fff" }} />
-                </ButtonBase>
-              </Box>
-            ))}
-
-            {selectedFilters.length > 0 && (
-              <ButtonBase onClick={removeAll}>
-                <Typography
-                  sx={{ my: "auto", color: colors.primary }}
-                  variant="subtitle2"
-                >
-                  Remove all
-                </Typography>
-              </ButtonBase>
-            )}
+    <>
+      <Container>
+        <Stack sx={{ my: 2 }}>
+          <Typography>{"Medical Darpan > Search > Fabiflu Teblet"}</Typography>
+          <Box sx={{ alignSelf: "center", width: "100%", maxWidth: 600 }}>
+            <SearchInput />
           </Box>
-        </Box>
-        <Grid container columnSpacing={{ xs: 0, md: 2 }}>
-          <Grid item md={2}>
-            <Box sx={{ display: { xs: "none", md: "block" } }}>
-              {" "}
-              <Sidebar
-                setSelectedFilters={setSelectedFilters}
-                selectedFilters={selectedFilters}
-              />
+          <Box sx={{ display: "flex", gap: 2, my: 2 }}>
+            <Typography variant="h5">
+              Paracetamol{" "}
+              <span style={{ fontSize: "1.2rem" }}>(128 products)</span>
+            </Typography>
+            <Box sx={{ display: "flex", gap: 1, flexWrap: "wrap" }}>
+              {selectedFilters.map((item, i) => (
+                <Box
+                  key={i}
+                  sx={{
+                    bgcolor: colors.secondary,
+                    color: colors.white,
+                    display: "flex",
+                    // height: 30,
+                    alignItems: "center",
+                    px: 1,
+                    gap: 1,
+                    borderRadius: 2,
+                  }}
+                >
+                  <Typography>{item}</Typography>
+                  <ButtonBase onClick={() => handleRemoveFilter(item)}>
+                    <CloseIcon fontSize="small" sx={{ color: "#fff" }} />
+                  </ButtonBase>
+                </Box>
+              ))}
+
+              {selectedFilters.length > 0 && (
+                <ButtonBase onClick={removeAll}>
+                  <Typography
+                    sx={{ my: "auto", color: colors.primary }}
+                    variant="subtitle2"
+                  >
+                    Remove all
+                  </Typography>
+                </ButtonBase>
+              )}
             </Box>
-            <SwipeableEdgeDrawer>
-              <Box sx={{ display: { xs: "block", md: "none" } }}>
+          </Box>
+          <Grid container columnSpacing={{ xs: 0, md: 2 }}>
+            <Grid item md={2}>
+              <Box sx={{ display: { xs: "none", md: "block" } }}>
+                {" "}
                 <Sidebar
                   setSelectedFilters={setSelectedFilters}
                   selectedFilters={selectedFilters}
                 />
               </Box>
-            </SwipeableEdgeDrawer>
+              <SwipeableEdgeDrawer>
+                <Box sx={{ display: { xs: "block", md: "none" } }}>
+                  <Sidebar
+                    setSelectedFilters={setSelectedFilters}
+                    selectedFilters={selectedFilters}
+                  />
+                </Box>
+              </SwipeableEdgeDrawer>
+            </Grid>
+            <Grid item xs={12} md={10} sx={{ mt: { xs: 8, md: 0 } }}>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexWrap: "wrap",
+                  gap: 2,
+                  width: "100%",
+                }}
+              >
+                <Result />
+                <Result />
+                <Result />
+                <Result />
+              </Box>
+            </Grid>
           </Grid>
-          <Grid item xs={12} md={10} sx={{ mt: { xs: 8, md: 0 } }}>
-            <Box
-              sx={{ display: "flex", flexWrap: "wrap", gap: 2, width: "100%" }}
-            >
-              <Result />
-              <Result />
-              <Result />
-              <Result />
-            </Box>
-          </Grid>
-        </Grid>
-      </Stack>
-    </Container>
+        </Stack>
+      </Container>
+      <Footer />
+    </>
   );
 }
 

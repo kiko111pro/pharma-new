@@ -7,10 +7,10 @@ import {
   Avatar,
   ButtonBase,
 } from "@mui/material";
+import Footer from "../../components/layout/Footer";
 import Banner from "./Banner";
 import React from "react";
 import SmallNavigation from "./SmallNavigation";
-import CallIcon from "@mui/icons-material/Call";
 import BusinessCenterIcon from "@mui/icons-material/BusinessCenter";
 import ProductCard from "../../components/ProductCard";
 import ImportExportIcon from "@mui/icons-material/ImportExport";
@@ -34,24 +34,9 @@ function CompanyPage() {
                 direction={{ xs: "column-reverse", md: "row" }}
                 justifyContent="space-between"
                 alignItems="center"
-                gap={1}
+                gap={2}
               >
                 <SmallNavigation />
-                <Paper
-                  sx={{
-                    alignSelf: "end",
-                    justifyContent: "flex-end",
-                    display: "flex",
-                    border: "1px solid grey",
-                    height: "100%",
-                    p: 1.9,
-                    gap: 2,
-                  }}
-                  variant="outlined"
-                >
-                  <CallIcon />
-                  <Typography textAlign="center"> Call 3848388291</Typography>
-                </Paper>
               </Stack>
 
               <Stack
@@ -59,12 +44,12 @@ function CompanyPage() {
                 sx={{ my: 2, overflowX: "scroll" }}
                 direction="row"
               >
-                <ProductCard includeImage />
-                <ProductCard includeImage />
-                <ProductCard includeImage />
-                <ProductCard includeImage />
-                <ProductCard includeImage />
-                <ProductCard includeImage />
+                <ProductCard includeImage disableQuote />
+                <ProductCard includeImage disableQuote />
+                <ProductCard includeImage disableQuote />
+                <ProductCard includeImage disableQuote />
+                <ProductCard includeImage disableQuote />
+                <ProductCard includeImage disableQuote />
               </Stack>
               <Box
                 sx={{
@@ -129,7 +114,7 @@ function CompanyPage() {
                   <Avatar>
                     <BusinessCenterIcon />
                   </Avatar>
-                  <Typography>
+                  <Typography sx={{ mt: 1 }}>
                     <strong>Nature of Business</strong>
                   </Typography>
                   <Typography variant="subtitle2">Manufacturer</Typography>
@@ -138,7 +123,7 @@ function CompanyPage() {
                   <Avatar>
                     <ImportExportIcon />
                   </Avatar>
-                  <Typography>
+                  <Typography sx={{ mt: 1 }}>
                     <strong>Import / Export Code</strong>
                   </Typography>
                   <Typography variant="subtitle2">ADBN*******</Typography>
@@ -147,7 +132,7 @@ function CompanyPage() {
                   <Avatar>
                     <TimelineIcon />
                   </Avatar>
-                  <Typography>
+                  <Typography sx={{ mt: 1 }}>
                     <strong>Annual Turnover</strong>
                   </Typography>
                   <Typography variant="subtitle2">400 Cr</Typography>
@@ -156,7 +141,7 @@ function CompanyPage() {
                   <Avatar>
                     <BusinessCenterIcon />
                   </Avatar>
-                  <Typography>
+                  <Typography sx={{ mt: 1 }}>
                     <strong>Year of Establishment</strong>
                   </Typography>
                   <Typography variant="subtitle2">2003</Typography>
@@ -197,6 +182,7 @@ function CompanyPage() {
         </Container>
       </Stack>
       {/* </Container> */}
+      <Footer />
     </Box>
   );
 }

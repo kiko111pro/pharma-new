@@ -40,6 +40,8 @@ function App() {
         />
         <Route path="/dashboard/support" element={<Support />} />
       </Routes>
+
+      {/* <Footer /> */}
     </>
   );
 }

@@ -28,9 +28,10 @@ function ProductManagement() {
               direction={{ md: "row" }}
             >
               <Stack
-                sx={{ maxWidth: 400 }}
+                sx={{ maxWidth: 500 }}
                 justifyContent="center"
                 direction="row"
+                gap={1}
               >
                 <OutlinedInput
                   fullWidth
@@ -41,7 +42,9 @@ function ProductManagement() {
                     </InputAdornment>
                   }
                 />
-                <Button variant="contained">Search</Button>
+                <Button variant="contained" sx={{ px: 4 }}>
+                  Search
+                </Button>
               </Stack>
               <Button variant="contained">Add new Product+</Button>
             </Stack>

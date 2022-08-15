@@ -23,12 +23,12 @@ function Card({ includeImage = false, disableQuote = false }) {
           Contact Supplier
         </Typography>
         <Divider />
-        <Stack
-          overflow={"hidden"}
-          alignItems={"center"}
-          sx={{ bgcolor: colors.primary, py: 1, cursor: "pointer" }}
-        >
-          {!disableQuote && (
+        {!disableQuote && (
+          <Stack
+            overflow={"hidden"}
+            alignItems={"center"}
+            sx={{ bgcolor: colors.primary, py: 1, cursor: "pointer" }}
+          >
             <>
               <Typography color={"white"} variant="h6">
                 Get Latest Price
@@ -37,8 +37,8 @@ function Card({ includeImage = false, disableQuote = false }) {
                 Request Quote
               </Typography>
             </>
-          )}
-        </Stack>
+          </Stack>
+        )}
       </Stack>
     </Paper>
   );

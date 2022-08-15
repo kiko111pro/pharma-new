@@ -5,11 +5,18 @@ function Offer() {
   return (
     <Stack
       direction={{ xs: "column", sm: "row" }}
-      justifyContent="space-around"
+      // justifyContent="center"
       alignItems={"center"}
       className="offer_background"
-      sx={{ py: 3, height: 200, my: 2 }}
-      spacing={4}
+      sx={{
+        py: 3,
+        height: 200,
+        my: 2,
+        maxWidth: "100vw",
+        // bgcolor: "blue",
+        justifyContent: "space-around",
+      }}
+      // spacing={4}
     >
       <Box
         sx={{
@@ -18,25 +25,47 @@ function Offer() {
           gap: 2,
           px: 2,
           alignItems: "center",
-          scale: { xs: 0.8 },
+          // scale: { xs: 0.8 },
+          justifyContent: "space-around",
+          // bgcolor: "yellow",
         }}
       >
-        <Box>
+        <Box
+          sx={{
+            display: { xs: "none", md: "block" },
+            maxHeight: 70,
+            maxWidth: 70,
+            // bgcolor: "yellow",
+          }}
+        >
           <img src={discount} alt="discount" />
         </Box>
-        <Typography sx={{ color: "white", fontWeight: 700 }} variant="h2">
+        <Typography
+          sx={{
+            color: "white",
+            fontWeight: 600,
+            fontSize: { xs: "1.8rem", md: "2rem" },
+          }}
+        >
           <strong>-20%</strong>
         </Typography>
-        <Typography sx={{ color: "white", fontWeight: 700 }} variant="h2">
+        <Typography
+          sx={{
+            color: "white",
+            fontWeight: 600,
+            fontSize: { xs: "1.8rem", md: "2rem" },
+          }}
+          variant="h3"
+        >
           neutraceuticals
         </Typography>
       </Box>
       <Button
         sx={{
-          maxWidth: 200,
+          // maxWidth: 200,
           bgcolor: "white",
           ":hover": { bgcolor: "#eee" },
-          mx: "auto",
+          // mx: "auto",
           borderRadius: 40,
           px: 3,
           color: "#000",

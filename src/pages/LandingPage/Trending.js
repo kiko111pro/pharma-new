@@ -8,10 +8,11 @@ import {
   ButtonBase,
 } from "@mui/material";
 import dummy from "../../assets/images/dummy.png";
-import { colors } from "../../mui_theme/theme";
+import theme, { colors } from "../../mui_theme/theme";
 import { useNavigate } from "react-router-dom";
 
-function Trending({ showInfo = false, title }) {
+function Trending({ showInfo = false, title, showName }) {
+  const arr = [1, 1, 1, 1];
   const navigate = useNavigate();
   const handleNavigate = () => {
     if (showInfo) {
@@ -40,133 +41,52 @@ function Trending({ showInfo = false, title }) {
           direction={"row"}
           // justifyContent={{ md: "center", xs:"non" }}
         >
-          <Paper
-            sx={{
-              maxWidth: 230,
-              minHeight: 213,
-            }}
-            variant="outlined"
-          >
-            <Stack>
-              <Box sx={{ p: 2 }}>
-                <ButtonBase onClick={handleNavigate}>
-                  <img src={dummy} className="trending__image" alt="dummy" />
-                </ButtonBase>
-              </Box>
-              {showInfo && (
-                <Stack
-                  sx={{
-                    bgcolor: colors.primary,
-                    alignItems: "center",
-                    p: 2,
-                  }}
-                >
-                  <Typography variant="h5" sx={{ color: "#fff" }}>
-                    Paracetamol
-                  </Typography>
-                  <Typography sx={{ color: "#fff" }} variant="subtitile2">
-                    Zydes
-                  </Typography>
-                </Stack>
-              )}
-            </Stack>
-          </Paper>
-          <Paper
-            sx={{
-              maxWidth: 230,
-              minHeight: 213,
-              // overflow: "hidden",
-            }}
-            variant="outlined"
-          >
-            <Stack>
-              <Box sx={{ p: 2 }}>
-                <ButtonBase onClick={handleNavigate}>
-                  <img src={dummy} className="trending__image" alt="dummy" />
-                </ButtonBase>
-              </Box>
-              {showInfo && (
-                <Stack
-                  sx={{
-                    bgcolor: colors.primary,
-                    alignItems: "center",
-                    p: 2,
-                  }}
-                >
-                  <Typography variant="h5" sx={{ color: "#fff" }}>
-                    Paracetamol
-                  </Typography>
-                  <Typography sx={{ color: "#fff" }} variant="subtitile2">
-                    Zydes
-                  </Typography>
-                </Stack>
-              )}
-            </Stack>
-          </Paper>
-          <Paper
-            sx={{
-              maxWidth: 230,
-              minHeight: 213,
-              // overflow: "hidden",
-            }}
-            variant="outlined"
-          >
-            <Stack>
-              <Box sx={{ p: 2 }}>
-                <ButtonBase onClick={handleNavigate}>
-                  <img src={dummy} className="trending__image" alt="dummy" />
-                </ButtonBase>
-              </Box>
-              {showInfo && (
-                <Stack
-                  sx={{
-                    bgcolor: colors.primary,
-                    alignItems: "center",
-                    p: 2,
-                  }}
-                >
-                  <Typography variant="h5" sx={{ color: "#fff" }}>
-                    Paracetamol
-                  </Typography>
-                  <Typography sx={{ color: "#fff" }} variant="subtitile2">
-                    Zydes
-                  </Typography>
-                </Stack>
-              )}
-            </Stack>
-          </Paper>
-          <Paper
-            sx={{
-              maxWidth: 230,
-              minHeight: 213,
-              // overflow: "hidden",
-            }}
-            variant="outlined"
-          >
-            <Stack>
-              <Box sx={{ p: 2 }}>
-                <ButtonBase onClick={handleNavigate}>
-                  <img src={dummy} className="trending__image" alt="dummy" />
-                </ButtonBase>
-              </Box>
-              {showInfo && (
-                <Stack
-                  sx={{
-                    bgcolor: colors.primary,
-                    alignItems: "center",
-                    p: 2,
-                  }}
-                >
-                  <Typography variant="h5" sx={{ color: "#fff" }}>
-                    Paracetamol
-                  </Typography>
-                  <Typography sx={{ color: "#fff" }} variant="subtitile2">
-                    Zydes
-                  </Typography>
-                </Stack>
-              )}
-            </Stack>
-          </Paper>
+          {Array.from(Array(4)).map((_) => (
+            <Paper
+              sx={{
+                maxWidth: 230,
+                minHeight: 213,
+              }}
+              variant="outlined"
+            >
+              <Stack>
+                <Box sx={{ p: 2 }}>
+                  <ButtonBase onClick={handleNavigate}>
+                    <img src={dummy} className="trending__image" alt="dummy" />
+                  </ButtonBase>
+                </Box>
+                {showInfo && (
+                  <Stack
+                    sx={{
+                      bgcolor: colors.primary,
+                      alignItems: "center",
+                      p: 2,
+                    }}
+                  >
+                    <Typography variant="h6" sx={{ color: "#fff" }}>
+                      Paracetamol
+                    </Typography>
+                    <Typography sx={{ color: "#fff" }} variant="subtitile2">
+                      Zydes
+                    </Typography>
+                  </Stack>
+                )}
+                {showName && (
+                  <Stack
+                    sx={{
+                      bgcolor: colors.primary,
+                      alignItems: "center",
+                      p: 2,
+                    }}
+                  >
+                    <Typography variant="h6" sx={{ color: "#fff" }}>
+                      Glenmark
+                    </Typography>
+                  </Stack>
+                )}
+              </Stack>
+            </Paper>
+          ))}
         </Stack>
       </Stack>
     </Container>

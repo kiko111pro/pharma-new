@@ -30,7 +30,7 @@ export default function BasicTable() {
       >
         <TableHead>
           <TableRow>
-            <TableCell>
+            <TableCell align="center">
               <strong>Image</strong>
             </TableCell>
             <TableCell align="center">
@@ -42,7 +42,7 @@ export default function BasicTable() {
             <TableCell align="center">
               <strong>Show/Hide</strong>
             </TableCell>
-            <TableCell align="right">
+            <TableCell align="center">
               <strong>Enable/Disable</strong>
             </TableCell>
           </TableRow>
@@ -53,23 +53,35 @@ export default function BasicTable() {
               key={row.name}
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
             >
-              <TableCell component="th" scope="row">
-                <Box>
+              <TableCell align="center" component="th" scope="row">
+                <Box
+                  sx={{
+                    justifyContent: "center",
+                    display: "flex",
+                  }}
+                >
                   <img src={dummy} style={{ maxHeight: 60 }} alt="img" />
                 </Box>
               </TableCell>
-              <TableCell component="th" scope="row">
+              <TableCell align="center" component="th" scope="row">
                 {row.name}
               </TableCell>
               <TableCell align="center">{row.date}</TableCell>
               <TableCell align="center">
                 <Switch />
               </TableCell>
-              <TableCell align="right">
-                <Button variant="outlined">Edit</Button>
-                <IconButton>
-                  <DeleteIcon color="primary" />
-                </IconButton>
+              <TableCell align="center">
+                <Box
+                  sx={{
+                    display: "flex",
+                    justifyContent: "center",
+                  }}
+                >
+                  <Button variant="outlined">Edit</Button>
+                  <IconButton>
+                    <DeleteIcon color="primary" />
+                  </IconButton>
+                </Box>
               </TableCell>
             </TableRow>
           ))}

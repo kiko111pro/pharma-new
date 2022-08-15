@@ -21,8 +21,8 @@ function Landing() {
       <Banner />
       <Enquiry />
       <Trending showInfo title="Trending Products" />
-      <Trending title="Trending Manufacturers" />
-      <Trending title="Trending Distributors" />
+      <Trending showName title="Trending Manufacturers" />
+      <Trending showName title="Trending Distributors" />
       <Offer />
       <Hero
         title={"Discover high-quality Products"}
