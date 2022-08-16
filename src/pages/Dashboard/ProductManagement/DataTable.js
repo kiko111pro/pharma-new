@@ -6,7 +6,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { Switch, Button, IconButton, Box } from "@mui/material";
+import { Switch, Button, IconButton, Box, Paper } from "@mui/material";
 import { dummy } from "../../../assets/images";
 
 function createData(name, date) {
@@ -23,11 +23,8 @@ const rows = [
 
 export default function BasicTable() {
   return (
-    <TableContainer>
-      <Table
-        sx={{ minWidth: 650, overflow: "scroll" }}
-        aria-label="simple table"
-      >
+    <TableContainer sx={{}} component={Paper}>
+      <Table sx={{ overflow: "scroll" }} aria-label="simple table">
         <TableHead>
           <TableRow>
             <TableCell align="center">

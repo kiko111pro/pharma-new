@@ -8,7 +8,7 @@ function Card({ title = "Plan", children, right = false }) {
       sx={{
         width: "100%",
         p: 1,
-        maxWidth: 300,
+        maxWidth: 360,
         position: "relative",
         minHeight: 150,
         maxHeight: "fit-content",

@@ -13,6 +13,8 @@ import LeadManagement from "./pages/Dashboard/LeadManagement";
 import Support from "./pages/Dashboard/Support";
 import Register from "./pages/Register";
 import Wallet from "./pages/Wallet";
+import About from "./pages/AboutUs";
+import Blog from "./pages/Blog";
 
 function App() {
   return (
@@ -28,6 +30,8 @@ function App() {
         <Route path="/dashboard/general" element={<General />} />
         <Route path="/register" element={<Register />} />
         <Route path="/wallet" element={<Wallet />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/blog" element={<Blog />} />
         <Route
           path="/dashboard/product-management"
           element={<ProductManagement />}

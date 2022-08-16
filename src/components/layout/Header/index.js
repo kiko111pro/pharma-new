@@ -9,17 +9,27 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
 import Tooltip from "@mui/material/Tooltip";
-import MenuItem from "@mui/material/MenuItem";
+import {
+  MenuItem,
+  Drawer,
+  ListItem,
+  Stack,
+  List,
+  Divider,
+} from "@mui/material";
 import AdbIcon from "@mui/icons-material/Adb";
 import Auth from "../Auth";
+import { useBoolean } from "../../../utils/hooks";
+import CloseIcon from "@mui/icons-material/Close";
 import { useNavigate } from "react-router-dom";
+import { colors } from "../../../mui_theme/theme";
 const pages = [
   { page: "Home", path: "/" },
   { page: "Products", path: "/product" },
   { page: "Distributors", path: "/company" },
   { page: "Manufacturers", path: "/company" },
-  { page: "About Us" },
-  { page: "Blog" },
+  { page: "About Us", path: "/about" },
+  { page: "Blog", path: "/blog" },
 ];
 const settings = ["Login", "Signup", "Profile", "Dashboard"];
 
@@ -27,6 +37,8 @@ const ResponsiveAppBar = () => {
   const navigate = useNavigate();
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const [drawerState, setDrawer] = useBoolean(false);
+
   const [open, setOpen] = React.useState(false);
   const [isLogin, setLogin] = React.useState(true);
   const handleOpen = (e) => {
@@ -35,9 +47,6 @@ const ResponsiveAppBar = () => {
   };
   const handleClose = () => setOpen(false);
 
-  const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
-  };
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
   };
@@ -61,6 +70,43 @@ const ResponsiveAppBar = () => {
 
     setAnchorElUser(null);
   };
+
+  const list = () => (
+    <Box
+      sx={{ width: "100vw", bgcolor: colors.primary, height: "100vh" }}
+      role="presentation"
+      onClick={setDrawer.off}
+      onKeyDown={setDrawer.off}
+    >
+      <Stack sx={{ p: 2 }}>
+        <Box>
+          <IconButton>
+            <CloseIcon color="action" />
+          </IconButton>
+        </Box>
+        <List>
+          {pages.map((page, i) => (
+            <>
+              <ListItem
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  color: "white",
+                  fontWeight: 600,
+                  py: 2,
+                  cursor: "pointer",
+                }}
+                onClick={() => navigate(page.path)}
+              >
+                {page.page}
+              </ListItem>
+              <Divider sx={{ bgcolor: "rgba(225, 218, 212, .3)" }} />
+            </>
+          ))}
+        </List>
+      </Stack>
+    </Box>
+  );
 
   return (
     <>
@@ -90,7 +136,7 @@ const ResponsiveAppBar = () => {
                 aria-label="account of current user"
                 aria-controls="menu-appbar"
                 aria-haspopup="true"
-                onClick={handleOpenNavMenu}
+                onClick={setDrawer.on}
                 color="inherit"
               >
                 <MenuIcon />
@@ -124,6 +170,13 @@ const ResponsiveAppBar = () => {
                   </MenuItem>
                 ))}
               </Menu>
+              <Drawer
+                anchor={"left"}
+                open={drawerState}
+                onClose={setDrawer.off}
+              >
+                {list()}
+              </Drawer>
             </Box>
             <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
             <Typography

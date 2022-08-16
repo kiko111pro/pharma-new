@@ -6,6 +6,7 @@ import {
   Typography,
   Stack,
   OutlinedInput,
+  Box,
   InputAdornment,
   Button,
 } from "@mui/material";
@@ -28,7 +29,7 @@ function ProductManagement() {
               direction={{ md: "row" }}
             >
               <Stack
-                sx={{ maxWidth: 500 }}
+                sx={{ maxWidth: 400, width: "100%" }}
                 justifyContent="center"
                 direction="row"
                 gap={1}
@@ -42,14 +43,25 @@ function ProductManagement() {
                     </InputAdornment>
                   }
                 />
-                <Button variant="contained" sx={{ px: 4 }}>
+                <Button
+                  variant="contained"
+                  sx={{ px: 4, width: "fit-content" }}
+                >
                   Search
                 </Button>
               </Stack>
               <Button variant="contained">Add new Product+</Button>
             </Stack>
 
-            <DataTable />
+            <Box
+              sx={{
+                width: { xs: "85vw", md: "100%" },
+                maxWidth: 1000,
+                p: 2,
+              }}
+            >
+              <DataTable />
+            </Box>
           </Stack>
         </Paper>
       </DashboardWrapper>

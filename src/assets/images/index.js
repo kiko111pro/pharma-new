@@ -16,3 +16,4 @@ export const dummy = require("./dummy.png");
 export const certificate = require("./certificate.png");
 export const productDemo = require("./productDemo.png");
 export const meds = require("./meds.png");
+export const drugs = require("./drugs.png");

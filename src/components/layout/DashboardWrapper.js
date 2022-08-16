@@ -9,6 +9,8 @@ function DashboardWrapper({ children }) {
         height: "90vh",
         overflow: "scroll",
         py: 2,
+        maxWidth: "100vw",
+        // bgcolor: "red",
       }}
     >
       <Container sx={{ marginLeft: 0 }}>{children}</Container>

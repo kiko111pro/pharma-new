@@ -8,7 +8,15 @@ function ProductPaper() {
       <Typography sx={{ fontSize: 28, fontWeight: 500 }}>
         Total Products(4)
       </Typography>
-      <Box sx={{ display: "flex", gap: 1, mt: 2 }}>
+      <Box
+        sx={{
+          display: "flex",
+          gap: 1,
+          mt: 2,
+          overflow: "scroll",
+          "&::-webkit-scrollbar": { width: 0 },
+        }}
+      >
         <ProductImageCard />
         <ProductImageCard />
         <ProductImageCard />

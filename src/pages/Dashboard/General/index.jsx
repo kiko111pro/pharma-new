@@ -15,11 +15,12 @@ import AlternateCard from "../../../components/AlternateContentCard";
 import ResponsiveDrawer from "../Drawer/Drawer";
 import { certificate } from "../../../assets/images";
 import ProductPaper from "./ProductPaper";
+import BasicTable from "./Table";
 function General() {
   return (
     <ResponsiveDrawer>
       <DashboardWrapper>
-        <Grid container columnSpacing={2}>
+        <Grid container spacing={1} columnSpacing={2}>
           <Grid item xs={12} md={9}>
             <Stack gap={1}>
               <Paper variant="outlined" sx={{ p: 2 }}>
@@ -30,8 +31,12 @@ function General() {
                   <Box
                     sx={{
                       display: "flex",
-                      gap: 2,
-                      alignItems: "center",
+                      flexDirection: { xs: "column", sm: "row" },
+
+                      gap: 1,
+                      alignItems: { xs: "flex-start", sm: "center" },
+                      justifyContent: "flex-start",
+
                       my: 1,
                     }}
                   >
@@ -41,6 +46,8 @@ function General() {
                         fontSize: 18,
                         fontWeight: 600,
                         color: colors.primary,
+                        // alignSelf: "start",
+                        // bgcolor: "red",
                       }}
                     >
                       Name
@@ -50,8 +57,12 @@ function General() {
                   <Box
                     sx={{
                       display: "flex",
-                      gap: 2,
-                      alignItems: "flex-start",
+                      flexDirection: { xs: "column", sm: "row" },
+
+                      gap: 1,
+                      alignItems: { xs: "flex-start", sm: "center" },
+                      justifyContent: "flex-start",
+
                       my: 1,
                     }}
                   >
@@ -73,7 +84,16 @@ function General() {
                     />
                   </Box>
                   <Box
-                    sx={{ display: "flex", gap: 2, alignItems: "start", my: 1 }}
+                    sx={{
+                      display: "flex",
+                      flexDirection: { xs: "column", sm: "row" },
+
+                      gap: 1,
+                      alignItems: { xs: "flex-start", sm: "center" },
+                      justifyContent: "flex-start",
+
+                      my: 1,
+                    }}
                   >
                     <Typography
                       sx={{
@@ -107,8 +127,15 @@ function General() {
               <ProductPaper />
             </Stack>
           </Grid>
-          <Grid item alignContent="flex-start" container gap={2} xs={12} md={3}>
-            <Grid gap={2} item xs={5} md={12}>
+          <Grid
+            item
+            alignContent="flex-start"
+            spacing={1}
+            container
+            xs={12}
+            md={3}
+          >
+            <Grid gap={2} item xs={12} sm={6} md={12}>
               <AlternateCard title="Subscription Plan">
                 <Stack>
                   <Typography
@@ -126,68 +153,19 @@ function General() {
                 </Stack>
               </AlternateCard>{" "}
             </Grid>
-            <Grid xs={5} md={12} item>
+            <Grid xs={6} md={12} item>
               <AlternateCard title="Total Leads" right={"39"} />
             </Grid>
-            <Grid xs={5} md={12} item>
+            <Grid xs={6} md={12} item>
               <AlternateCard title="Leads Received Today" right={"04"} />
             </Grid>
-            <Grid xs={5} md={12} item>
+            <Grid xs={12} md={12} item>
               <Paper sx={{ width: "100%", p: 1 }}>
                 <Typography sx={{ fontWeight: 500, fontSize: 26 }}>
                   Recent Leads
                 </Typography>
-                <Box
-                  sx={{
-                    display: "flex",
-                    borderBottomWidth: 1,
-                    borderColor: "#ddd",
-                    pb: 1,
-                    pt: 1,
-                  }}
-                >
-                  <Typography
-                    sx={{
-                      width: "50%",
-                      textAlign: "center",
-                      fontWeight: 600,
-                      color: "#444",
-                      fontSize: 18,
-                    }}
-                  >
-                    Name
-                  </Typography>
-                  <Typography
-                    sx={{
-                      width: "50%",
-                      textAlign: "center",
-                      fontWeight: 600,
-                      color: "#444",
-                      fontSize: 18,
-                    }}
-                  >
-                    Product Name
-                  </Typography>
-                </Box>
-                <Box sx={{ display: "flex", alignItems: "center" }}>
-                  <Stack sx={{ width: "50%" }}>
-                    <Typography>Sditya Bhardwaj</Typography>
-                    <Typography>Sditya Bhardwaj</Typography>
-                    <Typography>Sditya Bhardwaj</Typography>
-                    <Typography>Sditya Bhardwaj</Typography>
-                    <Typography>Sditya Bhardwaj</Typography>
-                    <Typography>Sditya Bhardwaj</Typography>
-                  </Stack>
-                  <Divider orientation="vertical" />
-                  <Stack sx={{ width: "50%" }}>
-                    <Typography>Cipla Paracetamol</Typography>
-                    <Typography>Cipla Paracetamol</Typography>
-                    <Typography>Cipla Paracetamol</Typography>
-                    <Typography>Cipla Paracetamol</Typography>
-                    <Typography>Cipla Paracetamol</Typography>
-                    <Typography>Cipla Paracetamol</Typography>
-                  </Stack>
-                </Box>
+
+                <BasicTable />
               </Paper>
             </Grid>
           </Grid>
