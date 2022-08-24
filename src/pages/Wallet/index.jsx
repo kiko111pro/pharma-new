@@ -1,13 +1,6 @@
 import React from "react";
 import Banner from "./Banner";
-import {
-  Stack,
-  Typography,
-  Accordion,
-  Paper,
-  Container,
-  Box,
-} from "@mui/material";
+import { Stack, Paper, Container } from "@mui/material";
 
 function Wallet() {
   return (

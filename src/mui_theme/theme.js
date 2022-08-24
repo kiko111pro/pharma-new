@@ -44,14 +44,14 @@ const theme = createTheme({
   },
 
   components: {
-    MuiToggleButton: {
-      styleOverrides: {
-        selected: {
-          backgroundColor: colors.primary,
-          color: "white",
-        },
-      },
-    },
+    // MuiToggleButton: {
+    //   styleOverrides: {
+    //     selected: {
+    //       backgroundColor: colors.primary,
+    //       color: "white",
+    //     },
+    //   },
+    // },
     MuiContainer: {
       defaultProps: {
         maxWidth: "xl",

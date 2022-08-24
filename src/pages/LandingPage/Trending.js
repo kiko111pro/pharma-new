@@ -8,11 +8,11 @@ import {
   ButtonBase,
 } from "@mui/material";
 import dummy from "../../assets/images/dummy.png";
-import theme, { colors } from "../../mui_theme/theme";
+import { colors } from "../../mui_theme/theme";
 import { useNavigate } from "react-router-dom";
 
 function Trending({ showInfo = false, title, showName }) {
-  const arr = [1, 1, 1, 1];
+  // const arr = [1, 1, 1, 1];
   const navigate = useNavigate();
   const handleNavigate = () => {
     if (showInfo) {

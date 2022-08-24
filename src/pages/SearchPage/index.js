@@ -8,15 +8,34 @@ import {
   Grid,
 } from "@mui/material";
 import SearchInput from "../../components/SearchInput";
+import Loading from "../../components/Loading";
 import CloseIcon from "@mui/icons-material/Close";
 import { colors } from "../../mui_theme/theme";
 import Sidebar from "./Sidebar";
 import Result from "./Result";
 import SwipeableEdgeDrawer from "./SwipeDrawer";
 import Footer from "../../components/layout/Footer";
+import { useSelector, useDispatch } from "react-redux";
+import { getSearchResult } from "../../features/search_product/search.reducer";
 
 function Search() {
+  const dispatch = useDispatch();
+  const { loading, isError, error, searchResult } = useSelector(
+    (state) => state.search
+  );
+
+  const handleSearch = (val) => {
+    if (val === "") return;
+
+    const params = {
+      searchTerm: "paracetamol",
+    };
+
+    dispatch(getSearchResult(params));
+  };
+
   const [selectedFilters, setSelectedFilters] = useState([]);
+
   const handleRemoveFilter = (item) => {
     const filtered = selectedFilters.filter((ele) => ele !== item);
     setSelectedFilters(filtered);
@@ -24,13 +43,15 @@ function Search() {
 
   const removeAll = () => setSelectedFilters([]);
 
+  console.log(searchResult);
+
   return (
     <>
       <Container>
         <Stack sx={{ my: 2 }}>
           <Typography>{"Medical Darpan > Search > Fabiflu Teblet"}</Typography>
           <Box sx={{ alignSelf: "center", width: "100%", maxWidth: 600 }}>
-            <SearchInput />
+            <SearchInput handleSearch={handleSearch} />
           </Box>
           <Box sx={{ display: "flex", gap: 2, my: 2 }}>
             <Typography variant="h5">
@@ -98,10 +119,14 @@ function Search() {
                   width: "100%",
                 }}
               >
-                <Result />
-                <Result />
-                <Result />
-                <Result />
+                {loading ? (
+                  <Loading />
+                ) : (
+                  searchResult?.products?.map((item, key) => (
+                    <Result key={key} product={item} />
+                  ))
+                )}
+                {/* {} */}
               </Box>
             </Grid>
           </Grid>

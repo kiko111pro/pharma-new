@@ -1,6 +1,7 @@
 import React from "react";
 import DashboardWrapper from "../../../components/layout/DashboardWrapper";
 import DataTable from "./DataTable";
+
 import {
   Paper,
   Typography,
@@ -9,11 +10,34 @@ import {
   Box,
   InputAdornment,
   Button,
+  Modal,
+  IconButton,
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import ResponsiveDrawer from "../Drawer/Drawer";
+import AddProduct from "./AddProduct";
+import { useBoolean } from "../../../utils/hooks";
+import CloseIcon from "@mui/icons-material/Close";
+
+const style = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  // maxWidth: 1000,
+  bgcolor: "background.paper",
+  border: "2px solid #000",
+  boxShadow: 24,
+  // width: "95%",
+  minWidth: 350,
+  // width: { md: 1200 },
+  // maxHeight: "95vh",
+  p: 1,
+  // overflow: "scroll",
+};
 
 function ProductManagement() {
+  const [openModal, setOpenModal] = useBoolean(false);
   return (
     <ResponsiveDrawer>
       <DashboardWrapper>
@@ -50,7 +74,9 @@ function ProductManagement() {
                   Search
                 </Button>
               </Stack>
-              <Button variant="contained">Add new Product+</Button>
+              <Button onClick={setOpenModal.on} variant="contained">
+                Add new Product+
+              </Button>
             </Stack>
 
             <Box
@@ -65,6 +91,24 @@ function ProductManagement() {
           </Stack>
         </Paper>
       </DashboardWrapper>
+
+      {/* **********MODAL****************** */}
+
+      <Modal
+        open={openModal}
+        // onClose={setOpenModal.off}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Paper sx={style}>
+          <Box sx={{ textAlign: "right" }}>
+            <IconButton onClick={setOpenModal.off}>
+              <CloseIcon />
+            </IconButton>
+          </Box>
+          <AddProduct />
+        </Paper>
+      </Modal>
     </ResponsiveDrawer>
   );
 }

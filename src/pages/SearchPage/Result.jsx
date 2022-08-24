@@ -4,7 +4,7 @@ import {
   Typography,
   Stack,
   Divider,
-  Box,
+  // Box,
   Button,
   ButtonBase,
 } from "@mui/material";
@@ -12,7 +12,8 @@ import TelegramIcon from "@mui/icons-material/Telegram";
 import { dummy } from "../../assets/images";
 import { colors } from "../../mui_theme/theme";
 import { useNavigate } from "react-router-dom";
-function Cards() {
+import { api } from "../../features/service.common";
+function Cards({ product }) {
   const navigate = useNavigate();
   return (
     <Paper
@@ -27,16 +28,28 @@ function Cards() {
         mx: { xs: "auto", md: 0 },
         display: "flex",
         alignContent: "flex-start",
+        flexDirection: "column",
       }}
     >
       <Stack>
         <Stack sx={{ p: 1 }}>
-          <ButtonBase onClick={() => navigate("/product")}>
-            <img src={dummy} alt="product" />
+          <ButtonBase
+            sx={{ flexGrow: 1, height: 200, bgcolor: "#eee" }}
+            onClick={() => navigate(`/product/${product._id}`)}
+          >
+            <img
+              src={
+                product.images[0].url !== null
+                  ? api + "/" + product.images[0].url
+                  : dummy
+              }
+              style={{ maxHeight: 200 }}
+              alt="product"
+            />
           </ButtonBase>
           <Stack sx={{ textAlign: "center", my: 1 }}>
             <Typography sx={{ fontWeight: 700, fontSize: 20 }}>
-              Calpol 500mg Tablets
+              {product.name}
             </Typography>
             <Typography sx={{ color: "#444", fontWeight: 600 }}>
               <Typography
@@ -47,16 +60,18 @@ function Cards() {
                   display: "inline",
                 }}
               >
-                Rs 1881
+                Rs {product.details.price}
               </Typography>
               / stripe
             </Typography>
           </Stack>
           <Stack sx={{ textAlign: "center" }}>
             <Typography sx={{ fontWeight: 700, fontSize: 18 }}>
-              Glenmark Pharma Limited
+              {product.details.brand}
             </Typography>
-            <Typography sx={{ color: "#444" }}>Amritsar, Punjab</Typography>
+            <Typography sx={{ color: "#444" }}>
+              {product.details.country}
+            </Typography>
           </Stack>
         </Stack>
         <Divider />
